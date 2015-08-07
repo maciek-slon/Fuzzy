@@ -1,0 +1,39 @@
+<Task>
+	<!-- reference task information -->
+	<Reference>
+		<Author>
+			<name>Maciej Stefańczyk</name>
+			<link></link>
+		</Author>
+		
+		<Description>
+			<brief>Fuzzy inference example</brief>
+			<full>Simple fuzzy inference system with two inputs and one output.</full>	
+		</Description>
+	</Reference>
+	
+	<!-- task definition -->
+	<Subtasks>
+		<Subtask name="Main">
+			<Executor name="Processing"  period="1">
+				<Component name="Temperature" type="Fuzzy:FloatPublisher" priority="1" bump="0">
+				</Component>
+				
+				<Component name="State" type="Fuzzy:FloatSubscriber" priority="2" bump="0">
+				</Component>
+			</Executor>
+		</Subtask>	
+	
+	</Subtasks>
+	
+	<!-- pipes connecting datastreams -->
+	<DataStreams>
+		<Source name="Temperature.output">
+			<sink>State.input</sink>		
+		</Source>
+	</DataStreams>
+</Task>
+
+
+
+
